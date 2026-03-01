@@ -17,7 +17,7 @@ export default async function handler(req, res) {
     const link = await short.createLink({
         originalURL: req.query.url,
         title: "Shortened By bam",
-        path: "P-"+req.query.short || "P-"+generateId()
+        path: "P-"+req.query.short || "P-" + (req.query.short ?? generateId())
     });
     res.send(link.shortURL);
 }
