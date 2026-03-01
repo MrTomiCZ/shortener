@@ -1,15 +1,6 @@
-//const shortio = require("short.io")
-import shortio from "short.io";
+const shortio = require("short.io")
+//import shortio from "short.io";
 const short = new shortio("mtmi.eu", 1303009, process.env.SHORTIO);
-
-export default function handler(req, res) {
-    const link = await short.createLink({
-        originalURL: req.query.url,
-        title: "Shortened By bam",
-        path: "P-"+req.query.short || "P-"+generateId()
-    )};
-    res.send(link.url);
-}
 
 function generateId(length = 6) {
     const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -20,4 +11,13 @@ function generateId(length = 6) {
     }
 
     return result
+}
+
+export default async function handler(req, res) {
+    const link = await short.createLink({
+        originalURL: req.query.url,
+        title: "Shortened By bam",
+        path: "P-"+req.query.short || "P-"+generateId()
+    )};
+    res.send(link.url);
 }
