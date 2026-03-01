@@ -18,6 +18,6 @@ export default async function handler(req, res) {
         originalURL: req.query.url,
         title: "Shortened By bam",
         path: "P-"+req.query.short || "P-"+generateId()
-    )};
+    });
     res.send(link.url);
 }
