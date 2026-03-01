@@ -19,5 +19,5 @@ export default async function handler(req, res) {
         title: "Shortened By bam",
         path: "P-"+req.query.short || "P-"+generateId()
     });
-    res.send(link.url);
+    res.send(link.shortURL);
 }
