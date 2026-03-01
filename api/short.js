@@ -1,5 +1,5 @@
-const shortio = require("short.io")
-//import shortio from "short.io";
+//const shortio = require("short.io")
+import shortio from "short.io";
 const short = new shortio("mtmi.eu", 1303009, process.env.SHORTIO);
 
 function generateId(length = 6) {
