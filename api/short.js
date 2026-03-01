@@ -14,10 +14,13 @@ function generateId(length = 6) {
 }
 
 export default async function handler(req, res) {
+    if (!req.query.url) {
+        return res.status(400).send("Missing url")
+    }
     const link = await short.createLink({
         originalURL: req.query.url,
         title: "Shortened By bam",
-        path: "P-"+req.query.short || "P-" + (req.query.short ?? generateId())
+        path: "P-" + (req.query.short ?? generateId())
     });
     res.send(link.shortURL);
 }
