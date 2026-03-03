@@ -18,8 +18,6 @@ export default async function handler(req, res) {
         return res.status(400).send("Missing url")
     }
     let pfx = "P-";
-    console.log(req.query?.pass);
-    console.log(process.env.MOONKEY);
     if (req.query?.pass == process.env.MOONKEY) pfx = "hy";
     const link = await short.createLink({
         originalURL: req.query.url,
