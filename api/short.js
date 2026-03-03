@@ -19,6 +19,7 @@ export default async function handler(req, res) {
     }
     let pfx = "P-";
     if (req.query?.pass == process.env.MOONKEY) pfx = "hy";
+    if (req.query?.pass == process.env.NOPFXKEY) pfx = "";
     const link = await short.createLink({
         originalURL: req.query.url,
         title: "Shortened By WebUI / API",
