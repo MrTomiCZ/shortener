@@ -17,10 +17,12 @@ export default async function handler(req, res) {
     if (!req.query.url) {
         return res.status(400).send("Missing url")
     }
+    let pfx = "P-";
+    if (req.query?.pass == process.env.MOONKEY) pfx = "hy";
     const link = await short.createLink({
         originalURL: req.query.url,
         title: "Shortened By WebUI / API",
-        path: "P-" + (req.query.short ?? generateId())
+        path: pfx + (req.query.short ?? generateId())
     });
     res.send(link.shortURL);
 }
