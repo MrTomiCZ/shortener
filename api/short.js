@@ -24,7 +24,7 @@ export default async function handler(req, res) {
     const link = await short.createLink({
         originalURL: req.query.url,
         title: "Shortened By WebUI / API",
-        path: pfx + (req.query.short ?? generateId())
+        path: pfx + (req.query.short || generateId())
     });
     res.send(link.shortURL);
 }
