@@ -20,6 +20,7 @@ export default async function handler(req, res) {
     let pfx = "P-";
     if (req.query?.pass == process.env.MOONKEY) pfx = "hy";
     if (req.query?.pass == process.env.JPMANKEY) pfx = "jp";
+    if (req.query?.pass == process.env.JPMANKEY) pfx = "";
     if (req.query?.pass == process.env.NOPFXKEY) pfx = "";
     const link = await short.createLink({
         originalURL: req.query.url,
